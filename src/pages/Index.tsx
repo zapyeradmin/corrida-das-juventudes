@@ -7,6 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { CalendarDays, MapPin, Clock, Footprints, MessageCircle, Mail, Award, Trophy } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { Countdown } from "@/components/Countdown";
 import heroRunners from "@/assets/hero-runners.jpg";
 import communityCelebration from "@/assets/community-celebration.jpg";
 import trophiesMedals from "@/assets/trophies-medals.jpg";
@@ -34,28 +35,10 @@ const Index = () => {
       });
     };
     initAOS();
-
-    // Inicializar contador regressivo
-    const initFlipDown = async () => {
-      try {
-        const FlipDownModule = await import('flipdown');
-        const FlipDown = FlipDownModule.default || FlipDownModule;
-        await import('flipdown/dist/flipdown.css');
-
-        // Data do evento: 30 de Agosto de 2025, 06:00 (horário de São Paulo)
-        const eventDate = new Date(2025, 7, 30, 6, 0, 0).getTime() / 1000;
-        
-        if (typeof FlipDown === 'function') {
-          new FlipDown(eventDate, 'countdown').start();
-        } else {
-          console.error('FlipDown não é uma função:', FlipDown);
-        }
-      } catch (error) {
-        console.error('Erro ao carregar FlipDown:', error);
-      }
-    };
-    initFlipDown();
   }, []);
+
+  // Data do evento: 30 de Agosto de 2025, 06:00 (horário de São Paulo)
+  const eventDate = new Date(2025, 7, 30, 6, 0, 0);
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
@@ -163,8 +146,8 @@ const Index = () => {
             A corrida que une fé, movimento e a força que atravessa gerações.
           </p>
         </div>
-        <div className="relative z-10 mt-12 w-full max-w-3xl px-6" data-aos="fade-up" data-aos-delay="200">
-          <div id="countdown" className="flipdown mx-auto"></div>
+        <div className="relative z-10 mt-12 w-full max-w-6xl px-6" data-aos="fade-up" data-aos-delay="200">
+          <Countdown targetDate={eventDate} />
         </div>
       </header>
 
