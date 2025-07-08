@@ -37,12 +37,22 @@ const Index = () => {
 
     // Inicializar contador regressivo
     const initFlipDown = async () => {
-      const FlipDown = (await import('flipdown')).default;
-      await import('flipdown/dist/flipdown.css');
+      try {
+        const FlipDownModule = await import('flipdown');
+        const FlipDown = FlipDownModule.default || FlipDownModule;
+        await import('flipdown/dist/flipdown.css');
 
-      // Data do evento: 30 de Agosto de 2025, 06:00 (horário de São Paulo)
-      const eventDate = new Date(2025, 7, 30, 6, 0, 0).getTime() / 1000;
-      new FlipDown(eventDate, 'countdown').start();
+        // Data do evento: 30 de Agosto de 2025, 06:00 (horário de São Paulo)
+        const eventDate = new Date(2025, 7, 30, 6, 0, 0).getTime() / 1000;
+        
+        if (typeof FlipDown === 'function') {
+          new FlipDown(eventDate, 'countdown').start();
+        } else {
+          console.error('FlipDown não é uma função:', FlipDown);
+        }
+      } catch (error) {
+        console.error('Erro ao carregar FlipDown:', error);
+      }
     };
     initFlipDown();
   }, []);
@@ -193,7 +203,7 @@ const Index = () => {
               <div className="border border-border p-8 rounded-2xl text-center card-hover" data-aos="fade-up" data-aos-delay="0">
                 <CalendarDays className="w-12 h-12 mx-auto text-secondary" />
                 <h3 className="font-bold text-2xl mt-4">Data</h3>
-                <p className="text-muted-foreground text-lg">31/08/2025</p>
+                <p className="text-muted-foreground text-lg">30/08/2025</p>
               </div>
               <div className="border border-border p-8 rounded-2xl text-center card-hover" data-aos="fade-up" data-aos-delay="100">
                 <MapPin className="w-12 h-12 mx-auto text-success" />
