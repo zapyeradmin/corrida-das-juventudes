@@ -40,8 +40,8 @@ const Index = () => {
       const FlipDown = (await import('flipdown')).default;
       await import('flipdown/dist/flipdown.css');
 
-      // Data do evento: 31 de Agosto de 2025, 06:00
-      const eventDate = new Date(2025, 7, 31, 6, 0, 0).getTime() / 1000;
+      // Data do evento: 30 de Agosto de 2025, 06:00 (horário de São Paulo)
+      const eventDate = new Date(2025, 7, 30, 6, 0, 0).getTime() / 1000;
       new FlipDown(eventDate, 'countdown').start();
     };
     initFlipDown();
