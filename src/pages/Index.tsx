@@ -10,9 +10,10 @@ import { useToast } from "@/hooks/use-toast";
 import heroRunners from "@/assets/hero-runners.jpg";
 import communityCelebration from "@/assets/community-celebration.jpg";
 import trophiesMedals from "@/assets/trophies-medals.jpg";
-
 const Index = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     nome_completo: "",
@@ -22,13 +23,15 @@ const Index = () => {
     sexo: "Masculino",
     categoria: "Geral Masculino"
   });
-
   useEffect(() => {
     // Inicializar AOS quando o componente montar
     const initAOS = async () => {
       const AOS = await import('aos');
       await import('aos/dist/aos.css');
-      AOS.default.init({ duration: 800, once: true });
+      AOS.default.init({
+        duration: 800,
+        once: true
+      });
     };
     initAOS();
 
@@ -36,23 +39,23 @@ const Index = () => {
     const initFlipDown = async () => {
       const FlipDown = (await import('flipdown')).default;
       await import('flipdown/dist/flipdown.css');
-      
+
       // Data do evento: 31 de Agosto de 2025, 06:00
       const eventDate = new Date(2025, 7, 31, 6, 0, 0).getTime() / 1000;
       new FlipDown(eventDate, 'countdown').start();
     };
     initFlipDown();
   }, []);
-
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
   };
-
   const validateCPF = (cpf: string) => {
     const cleanCPF = cpf.replace(/\D/g, '');
     return cleanCPF.length === 11;
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -67,19 +70,16 @@ const Index = () => {
       setIsSubmitting(false);
       return;
     }
-
     const registrationData = {
       ...formData,
       cpf: formData.cpf.replace(/\D/g, ''),
       status_pagamento: 'pendente'
     };
-
     try {
-      const { data, error } = await supabase
-        .from('inscricoes')
-        .insert([registrationData])
-        .select();
-
+      const {
+        data,
+        error
+      } = await supabase.from('inscricoes').insert([registrationData]).select();
       if (error) {
         console.error('Erro do Supabase:', error);
         let errorMessage = 'Ocorreu um erro ao realizar a inscrição. Tente novamente.';
@@ -118,9 +118,7 @@ const Index = () => {
       setIsSubmitting(false);
     }
   };
-
-  return (
-    <div className="min-h-screen bg-background font-inter">
+  return <div className="min-h-screen bg-background font-inter">
       {/* NAVEGAÇÃO */}
       <nav className="bg-background/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm transition-all duration-300 border-b">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -143,11 +141,10 @@ const Index = () => {
       </nav>
 
       {/* SEÇÃO PRINCIPAL (HERO) */}
-      <header 
-        className="relative h-screen min-h-[700px] flex flex-col items-center justify-center text-white bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: `url(${heroRunners})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/70 z-0"></div>
+      <header className="relative h-screen min-h-[700px] flex flex-col items-center justify-center text-white bg-cover bg-center bg-fixed" style={{
+      backgroundImage: `url(${heroRunners})`
+    }}>
+        <div className="absolute inset-0 bg-gradient-to-t from-green/70 via-green/20 to-green/70 z-0"></div>
         <div className="relative z-10 text-center px-6" data-aos="fade-up">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mt-2 uppercase hero-title">
             CORRIDA DAS JUVENTUDES
@@ -166,11 +163,7 @@ const Index = () => {
         <section id="sobre" className="py-20 lg:py-32 bg-muted aurora-bg">
           <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             <div data-aos="fade-right">
-              <img 
-                src={communityCelebration} 
-                alt="Imagem de Jovens celebrando juntos" 
-                className="rounded-2xl shadow-2xl w-full h-full object-cover"
-              />
+              <img src={communityCelebration} alt="Imagem de Jovens celebrando juntos" className="rounded-2xl shadow-2xl w-full h-full object-cover" />
             </div>
             <div data-aos="fade-left" data-aos-delay="200">
               <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
@@ -255,11 +248,7 @@ const Index = () => {
               </p>
             </div>
             <div data-aos="fade-left" data-aos-delay="200">
-              <img 
-                src={trophiesMedals} 
-                alt="Imagem de Troféus e Medalhas" 
-                className="rounded-2xl shadow-2xl w-full h-full object-cover"
-              />
+              <img src={trophiesMedals} alt="Imagem de Troféus e Medalhas" className="rounded-2xl shadow-2xl w-full h-full object-cover" />
             </div>
           </div>
         </section>
@@ -281,53 +270,26 @@ const Index = () => {
                 <form onSubmit={handleSubmit} className="space-y-4 lg:col-span-3" data-aos="fade-left">
                   <div>
                     <Label htmlFor="nome">Nome Completo</Label>
-                    <Input 
-                      id="nome" 
-                      value={formData.nome_completo}
-                      onChange={(e) => handleInputChange('nome_completo', e.target.value)}
-                      className="mt-1" 
-                      required 
-                    />
+                    <Input id="nome" value={formData.nome_completo} onChange={e => handleInputChange('nome_completo', e.target.value)} className="mt-1" required />
                   </div>
                   <div>
                     <Label htmlFor="email">E-mail</Label>
-                    <Input 
-                      type="email" 
-                      id="email" 
-                      value={formData.email}
-                      onChange={(e) => handleInputChange('email', e.target.value)}
-                      className="mt-1" 
-                      required 
-                    />
+                    <Input type="email" id="email" value={formData.email} onChange={e => handleInputChange('email', e.target.value)} className="mt-1" required />
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="nascimento">Data de Nascimento</Label>
-                      <Input 
-                        type="date" 
-                        id="nascimento" 
-                        value={formData.data_nascimento}
-                        onChange={(e) => handleInputChange('data_nascimento', e.target.value)}
-                        className="mt-1" 
-                        required 
-                      />
+                      <Input type="date" id="nascimento" value={formData.data_nascimento} onChange={e => handleInputChange('data_nascimento', e.target.value)} className="mt-1" required />
                     </div>
                     <div>
                       <Label htmlFor="cpf">CPF</Label>
-                      <Input 
-                        id="cpf" 
-                        placeholder="000.000.000-00" 
-                        value={formData.cpf}
-                        onChange={(e) => handleInputChange('cpf', e.target.value)}
-                        className="mt-1" 
-                        required 
-                      />
+                      <Input id="cpf" placeholder="000.000.000-00" value={formData.cpf} onChange={e => handleInputChange('cpf', e.target.value)} className="mt-1" required />
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="sexo">Sexo</Label>
-                      <Select value={formData.sexo} onValueChange={(value) => handleInputChange('sexo', value)}>
+                      <Select value={formData.sexo} onValueChange={value => handleInputChange('sexo', value)}>
                         <SelectTrigger className="mt-1">
                           <SelectValue />
                         </SelectTrigger>
@@ -339,7 +301,7 @@ const Index = () => {
                     </div>
                     <div>
                       <Label htmlFor="categoria">Categoria</Label>
-                      <Select value={formData.categoria} onValueChange={(value) => handleInputChange('categoria', value)}>
+                      <Select value={formData.categoria} onValueChange={value => handleInputChange('categoria', value)}>
                         <SelectTrigger className="mt-1">
                           <SelectValue />
                         </SelectTrigger>
@@ -353,16 +315,8 @@ const Index = () => {
                     </div>
                   </div>
                   <div className="pt-4">
-                    <Button 
-                      type="submit" 
-                      disabled={isSubmitting}
-                      className="w-full btn-secondary py-4 text-xl font-bold"
-                    >
-                      {isSubmitting ? (
-                        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mx-auto"></div>
-                      ) : (
-                        "CONCLUIR MINHA INSCRIÇÃO"
-                      )}
+                    <Button type="submit" disabled={isSubmitting} className="w-full btn-secondary py-4 text-xl font-bold">
+                      {isSubmitting ? <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mx-auto"></div> : "CONCLUIR MINHA INSCRIÇÃO"}
                     </Button>
                   </div>
                 </form>
@@ -430,19 +384,11 @@ const Index = () => {
             Um evento do Setor Diocesano da Juventude de Afogados da Ingazeira.
           </p>
           <div className="mt-8 flex justify-center items-center space-x-6">
-            <a 
-              href="https://wa.me/5587999211865" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center hover:text-primary transition-colors text-lg"
-            >
+            <a href="https://wa.me/5587999211865" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-primary transition-colors text-lg">
               <MessageCircle className="w-6 h-6 mr-2" />
               <span>WhatsApp</span>
             </a>
-            <a 
-              href="mailto:setordiocesanodajuventude@gmail.com" 
-              className="flex items-center hover:text-primary transition-colors text-lg"
-            >
+            <a href="mailto:setordiocesanodajuventude@gmail.com" className="flex items-center hover:text-primary transition-colors text-lg">
               <Mail className="w-6 h-6 mr-2" />
               <span>E-mail</span>
             </a>
@@ -452,8 +398,6 @@ const Index = () => {
           </p>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
