@@ -4,7 +4,7 @@ export const HeroSection = () => {
       id="hero" 
       className="relative bg-cover bg-center min-h-screen flex items-center justify-center hero-overlay"
       style={{
-        backgroundImage: "url('https://placehold.co/1920x1080/0a1428/eab308?text=Corrida+das+Juventudes')"
+        backgroundImage: "url('/lovable-uploads/d50f253b-7a76-42ef-baf7-4363c523a068.png')"
       }}
     >
       <div className="hero-content text-center text-white p-4 md:p-8">
