@@ -101,7 +101,7 @@ export const RegistrationSection = () => {
   return (
     <section id="inscricoes" className="pt-12 md:pt-16 pb-16 md:pb-20 bg-gradient-to-br from-blue-600 to-indigo-800 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-poppins">
+        <h2 className="section-title text-4xl md:text-5xl font-bold text-center mb-4">
           Inscreva-se e <span className="text-yellow-400">Participe!</span>
         </h2>
         <p className="text-center text-blue-100 mb-10 max-w-xl mx-auto">
@@ -110,7 +110,7 @@ export const RegistrationSection = () => {
           via PIX ou Cartão de Crédito e aguarde até a "CONFIRMAÇÃO DE PAGAMENTO COM SUCESSO" e nos envie o comprovante 
           de pagamento para o WhatsApp (87) 99921-1865 para validar sua inscrição!
         </p>
-        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xl shadow-2xl text-gray-800">
+        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xl shadow-2xl text-gray-800 custom-card">
           <div className="mb-5">
             <Label htmlFor="nome" className="block text-sm font-semibold mb-1 text-gray-700">
               Nome Completo <span className="text-red-500">*</span>
@@ -220,7 +220,7 @@ export const RegistrationSection = () => {
             <Button 
               type="submit" 
               disabled={isSubmitting} 
-              className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 text-white font-bold py-3.5 px-12 rounded-lg text-lg w-full sm:w-auto shadow-xl transition-all duration-300 hover:shadow-2xl hover:brightness-110"
+              className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 text-white font-bold py-3.5 px-12 rounded-lg text-lg cta-button w-full sm:w-auto shadow-xl transition-all duration-300 hover:shadow-2xl hover:brightness-110"
             >
               {isSubmitting ? 
                 <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mx-auto"></div> : 

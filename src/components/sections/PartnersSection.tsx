@@ -2,8 +2,8 @@ export const PartnersSection = () => {
   return (
     <section id="parceiros" className="py-20 md:py-28 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-poppins">
-          Nossos <span className="bg-gradient-to-r from-blue-600 to-emerald-400 bg-clip-text text-transparent">Parceiros</span>
+        <h2 className="section-title text-4xl md:text-5xl font-bold text-center mb-4">
+          Nossos <span className="gradient-text">Parceiros</span>
         </h2>
         <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
           Agradecemos a todos que acreditam e apoiam este evento de fé e esporte.
@@ -26,7 +26,7 @@ export const PartnersSection = () => {
             href="https://wa.me/5587999211865" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-block bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 px-10 rounded-lg text-lg shadow-xl transition-all duration-300 hover:shadow-2xl hover:brightness-110 transform hover:-translate-y-1"
+            className="inline-block bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 px-10 rounded-lg text-lg cta-button shadow-xl transition-all duration-300 hover:shadow-2xl hover:brightness-110"
           >
             <i className="fab fa-whatsapp mr-2"></i> Seja um Parceiro
           </a>

@@ -2,15 +2,15 @@ export const RouteSection = () => {
   return (
     <section id="percurso" className="py-20 md:py-28 bg-gray-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-poppins">
-          Percurso <span className="bg-gradient-to-r from-blue-600 to-emerald-400 bg-clip-text text-transparent">Desafiador</span> (5Km)
+        <h2 className="section-title text-4xl md:text-5xl font-bold text-center mb-4">
+          Percurso <span className="gradient-text">Desafiador</span> (5Km)
         </h2>
         <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
           Explore um trajeto que celebra a beleza de Afogados da Ingazeira, passando por pontos importantes da cidade.
         </p>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div className="custom-card overflow-hidden">
               <img 
                 src="https://placehold.co/600x500/1e3a8a/ffffff?text=Mapa+Ilustrativo+do+Percurso" 
                 alt="Mapa do Percurso da Corrida de 5km" 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const FAQSection = () => {
   const [openItem, setOpenItem] = useState<string | null>(null);
@@ -26,6 +26,24 @@ export const FAQSection = () => {
     }
   ];
 
+  useEffect(() => {
+    // Script para o FAQ (Acordeão)
+    const faqElements = document.querySelectorAll('.faq-item');
+    faqElements.forEach(item => {
+      const questionButton = item.querySelector('.faq-question');
+      questionButton?.addEventListener('click', () => {
+        // Fecha todos os outros itens abertos
+        faqElements.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('open')) {
+            otherItem.classList.remove('open');
+          }
+        });
+        // Abre ou fecha o item clicado
+        item.classList.toggle('open');
+      });
+    });
+  }, []);
+
   const toggleItem = (itemId: string) => {
     setOpenItem(openItem === itemId ? null : itemId);
   };
@@ -33,37 +51,29 @@ export const FAQSection = () => {
   return (
     <section id="faq" className="py-20 md:py-28 bg-gray-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-poppins">
-          Perguntas <span className="bg-gradient-to-r from-blue-600 to-emerald-400 bg-clip-text text-transparent">Frequentes</span>
+        <h2 className="section-title text-4xl md:text-5xl font-bold text-center mb-4">
+          Perguntas <span className="gradient-text">Frequentes</span>
         </h2>
         <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
           Tire suas principais dúvidas sobre a Corrida das Juventudes.
         </p>
         
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div id="faq-container" className="max-w-3xl mx-auto space-y-4">
           {faqItems.map((item) => (
             <div 
               key={item.id}
-              className={`bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 transition-all duration-300 ${
-                openItem === item.id ? 'border-blue-500' : ''
+              className={`faq-item bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 transition-all duration-300 ${
+                openItem === item.id ? 'open' : ''
               }`}
             >
               <button
-                className={`flex justify-between items-center w-full p-5 text-left font-semibold text-gray-800 focus:outline-none hover:bg-gray-50 ${
-                  openItem === item.id ? 'bg-gray-50' : ''
-                }`}
+                className="faq-question flex justify-between items-center w-full p-5 text-left font-semibold text-gray-800 focus:outline-none hover:bg-gray-50"
                 onClick={() => toggleItem(item.id)}
               >
                 <span className="text-lg">{item.question}</span>
-                <i className={`fas fa-chevron-down transition-transform duration-300 ${
-                  openItem === item.id ? 'rotate-180' : ''
-                }`}></i>
+                <i className="fas fa-chevron-down faq-icon transition-transform duration-300"></i>
               </button>
-              <div 
-                className={`transition-all duration-500 ease-in-out overflow-hidden ${
-                  openItem === item.id ? 'max-h-96' : 'max-h-0'
-                }`}
-              >
+              <div className="faq-answer">
                 <div className="p-5 pt-0 text-gray-600">
                   <p>{item.answer}</p>
                 </div>

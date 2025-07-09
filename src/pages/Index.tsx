@@ -12,20 +12,15 @@ import { Footer } from "@/components/sections/Footer";
 
 const Index = () => {
   useEffect(() => {
-    // Inicializar AOS quando o componente montar
-    const initAOS = async () => {
-      const AOS = await import('aos');
-      await import('aos/dist/aos.css');
-      AOS.default.init({
-        duration: 800,
-        once: true
-      });
-    };
-    initAOS();
+    // Script para o ano atual no footer
+    const currentYearElement = document.getElementById('currentYear');
+    if (currentYearElement) {
+      currentYearElement.textContent = new Date().getFullYear().toString();
+    }
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-700 antialiased font-roboto">
+    <div className="bg-gray-50 text-gray-700 antialiased">
       <Navigation />
       <HeroSection />
       <main>
