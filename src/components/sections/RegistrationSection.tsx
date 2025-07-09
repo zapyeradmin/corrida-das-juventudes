@@ -5,9 +5,10 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-
 export const RegistrationSection = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     nome_completo: "",
@@ -18,19 +19,16 @@ export const RegistrationSection = () => {
     categoria: "Geral Masculino",
     forma_pagamento: ""
   });
-
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
   };
-
   const validateCPF = (cpf: string) => {
     const cleanCPF = cpf.replace(/\D/g, '');
     return cleanCPF.length === 11;
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -45,19 +43,16 @@ export const RegistrationSection = () => {
       setIsSubmitting(false);
       return;
     }
-
     const registrationData = {
       ...formData,
       cpf: formData.cpf.replace(/\D/g, ''),
       status_pagamento: 'pendente'
     };
-
     try {
-      const { data, error } = await supabase
-        .from('inscricoes')
-        .insert([registrationData])
-        .select();
-
+      const {
+        data,
+        error
+      } = await supabase.from('inscricoes').insert([registrationData]).select();
       if (error) {
         console.error('Erro do Supabase:', error);
         let errorMessage = 'Ocorreu um erro ao realizar a inscrição. Tente novamente.';
@@ -97,14 +92,12 @@ export const RegistrationSection = () => {
       setIsSubmitting(false);
     }
   };
-
-  return (
-    <section id="inscricoes" className="pt-12 md:pt-16 pb-16 md:pb-20 bg-gradient-to-br from-blue-600 to-indigo-800 text-white">
+  return <section id="inscricoes" className="pt-12 md:pt-16 pb-16 md:pb-20 bg-gradient-to-br from-blue-600 to-indigo-800 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="section-title text-4xl md:text-5xl font-bold text-center mb-4">
           Inscreva-se e <span className="text-yellow-400">Participe!</span>
         </h2>
-        <p className="text-center text-blue-100 mb-10 max-w-xl mx-auto">
+        <p className="text-center text-blue-100 mb-10 max-w-xl mx-auto px-[17px]">
           Não perca tempo! Preencha o formulário abaixo e garanta sua vaga na Corrida das Juventudes. Vagas limitadas! 
           Ao preencher o formulário de inscrição, você será redirecionado(a) para página de pagamento, realize o pagamento 
           via PIX ou Cartão de Crédito e aguarde até a "CONFIRMAÇÃO DE PAGAMENTO COM SUCESSO" e nos envie o comprovante 
@@ -115,13 +108,7 @@ export const RegistrationSection = () => {
             <Label htmlFor="nome" className="block text-sm font-semibold mb-1 text-gray-700">
               Nome Completo <span className="text-red-500">*</span>
             </Label>
-            <Input 
-              id="nome" 
-              value={formData.nome_completo} 
-              onChange={e => handleInputChange('nome_completo', e.target.value)} 
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow" 
-              required 
-            />
+            <Input id="nome" value={formData.nome_completo} onChange={e => handleInputChange('nome_completo', e.target.value)} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow" required />
           </div>
 
           <div className="grid sm:grid-cols-2 gap-x-6 gap-y-5 mb-5">
@@ -129,28 +116,13 @@ export const RegistrationSection = () => {
               <Label htmlFor="email" className="block text-sm font-semibold mb-1 text-gray-700">
                 E-mail <span className="text-red-500">*</span>
               </Label>
-              <Input 
-                type="email" 
-                id="email" 
-                value={formData.email} 
-                onChange={e => handleInputChange('email', e.target.value)} 
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow" 
-                placeholder="seuemail@dominio.com"
-                required 
-              />
+              <Input type="email" id="email" value={formData.email} onChange={e => handleInputChange('email', e.target.value)} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow" placeholder="seuemail@dominio.com" required />
             </div>
             <div>
               <Label htmlFor="nascimento" className="block text-sm font-semibold mb-1 text-gray-700">
                 Data de Nascimento <span className="text-red-500">*</span>
               </Label>
-              <Input 
-                type="date" 
-                id="nascimento" 
-                value={formData.data_nascimento} 
-                onChange={e => handleInputChange('data_nascimento', e.target.value)} 
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow" 
-                required 
-              />
+              <Input type="date" id="nascimento" value={formData.data_nascimento} onChange={e => handleInputChange('data_nascimento', e.target.value)} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow" required />
             </div>
           </div>
 
@@ -159,14 +131,7 @@ export const RegistrationSection = () => {
               <Label htmlFor="cpf" className="block text-sm font-semibold mb-1 text-gray-700">
                 CPF <span className="text-red-500">*</span>
               </Label>
-              <Input 
-                id="cpf" 
-                placeholder="000.000.000-00" 
-                value={formData.cpf} 
-                onChange={e => handleInputChange('cpf', e.target.value)} 
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow" 
-                required 
-              />
+              <Input id="cpf" placeholder="000.000.000-00" value={formData.cpf} onChange={e => handleInputChange('cpf', e.target.value)} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow" required />
             </div>
             <div>
               <Label htmlFor="sexo" className="block text-sm font-semibold mb-1 text-gray-700">
@@ -217,21 +182,13 @@ export const RegistrationSection = () => {
           </div>
 
           <div className="text-center">
-            <Button 
-              type="submit" 
-              disabled={isSubmitting} 
-              className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 text-white font-bold py-3.5 px-12 rounded-lg text-lg cta-button w-full sm:w-auto shadow-xl transition-all duration-300 hover:shadow-2xl hover:brightness-110"
-            >
-              {isSubmitting ? 
-                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mx-auto"></div> : 
-                <>
+            <Button type="submit" disabled={isSubmitting} className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 text-white font-bold py-3.5 px-12 rounded-lg text-lg cta-button w-full sm:w-auto shadow-xl transition-all duration-300 hover:shadow-2xl hover:brightness-110">
+              {isSubmitting ? <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mx-auto"></div> : <>
                   <i className="fas fa-check-circle mr-2"></i> Confirmar Inscrição
-                </>
-              }
+                </>}
             </Button>
           </div>
         </form>
       </div>
-    </section>
-  );
+    </section>;
 };
