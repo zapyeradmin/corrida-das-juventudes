@@ -1,14 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-
 export const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   useEffect(() => {
     const updateHeaderStyle = () => {
       const header = document.getElementById('mainHeader');
       const mobileMenuButton = document.querySelector('.mobile-menu-button');
-      
       if (window.scrollY > 50) {
         header?.classList.add('header-scrolled');
         mobileMenuButton?.classList.remove('text-gray-200');
@@ -19,18 +15,14 @@ export const Navigation = () => {
         mobileMenuButton?.classList.add('text-gray-200');
       }
     };
-
     window.addEventListener('scroll', updateHeaderStyle);
     updateHeaderStyle();
-
     return () => window.removeEventListener('scroll', updateHeaderStyle);
   }, []);
-
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     const header = document.getElementById('mainHeader');
     const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    
     if (!isMobileMenuOpen) {
       header?.classList.add('header-scrolled');
       mobileMenuButton?.classList.remove('text-gray-200');
@@ -50,12 +42,10 @@ export const Navigation = () => {
       updateHeaderStyle();
     }
   };
-
   const handleMobileMenuClose = () => {
     setIsMobileMenuOpen(false);
     const header = document.getElementById('mainHeader');
     const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    
     const updateHeaderStyle = () => {
       if (window.scrollY > 50) {
         header?.classList.add('header-scrolled');
@@ -69,9 +59,7 @@ export const Navigation = () => {
     };
     updateHeaderStyle();
   };
-
-  return (
-    <>
+  return <>
       <header id="mainHeader" className="fixed w-full z-50 transition-all duration-300 ease-in-out py-2">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex justify-between items-center">
@@ -88,18 +76,8 @@ export const Navigation = () => {
               <a href="#inscricoes" className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 text-white font-semibold py-2 px-5 rounded-lg cta-button text-sm transition-all duration-300 hover:shadow-lg hover:brightness-110">
                 Inscreva-se
               </a>
-              <Link to="/admin-login" className="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-all duration-300">
-                Painel do Administrador
-              </Link>
             </div>
-            <div className="md:hidden">
-              <button 
-                onClick={handleMobileMenuToggle}
-                className="mobile-menu-button text-gray-200 hover:text-white focus:outline-none"
-              >
-                <i className="fas fa-bars text-2xl"></i>
-              </button>
-            </div>
+            
           </nav>
         </div>
         <div id="mobileMenu" className={`${isMobileMenuOpen ? '' : 'hidden'} md:hidden bg-white shadow-lg absolute w-full`}>
@@ -112,6 +90,5 @@ export const Navigation = () => {
           <a href="#inscricoes" className="block py-3 px-6 bg-yellow-500 text-gray-900 text-center font-semibold hover:bg-yellow-600" onClick={handleMobileMenuClose}>Inscreva-se</a>
         </div>
       </header>
-    </>
-  );
+    </>;
 };
