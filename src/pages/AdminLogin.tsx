@@ -62,14 +62,18 @@ const AdminLogin = () => {
 
   return (
     <div 
-      className="flex items-center justify-center h-screen w-full bg-slate-900 bg-opacity-50"
+      className="relative flex items-center justify-center h-screen w-full"
       style={{
         backgroundImage: "url('/lovable-uploads/0eafe6c1-a1b6-418a-9728-2e651d9c8367.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}
     >
-      <div className="w-full max-w-md bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-gray-200/50">
+      {/* Overlay com gradiente */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-transparent to-black/60"></div>
+      
+      {/* Conteúdo */}
+      <div className="relative z-10 w-full max-w-md bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-gray-200/50">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 font-poppins">Acesso Administrativo</h1>
           <p className="text-gray-600 mt-2 font-poppins">Corrida das Juventudes</p>
