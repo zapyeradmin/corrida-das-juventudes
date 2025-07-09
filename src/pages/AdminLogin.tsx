@@ -64,7 +64,7 @@ const AdminLogin = () => {
     <div 
       className="flex items-center justify-center h-screen w-full bg-slate-900 bg-opacity-50"
       style={{
-        backgroundImage: "url('/lovable-uploads/d50f253b-7a76-42ef-baf7-4363c523a068.png')",
+        backgroundImage: "url('/lovable-uploads/0eafe6c1-a1b6-418a-9728-2e651d9c8367.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}
