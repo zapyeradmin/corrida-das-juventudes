@@ -1,15 +1,9 @@
 import { Countdown } from '@/components/Countdown';
-
 export const HeroSection = () => {
   const eventDate = new Date('2025-08-30T06:00:00-03:00');
-  return (
-    <section 
-      id="hero" 
-      className="relative bg-cover bg-center min-h-screen flex items-center justify-center hero-overlay"
-      style={{
-        backgroundImage: "url('/lovable-uploads/d50f253b-7a76-42ef-baf7-4363c523a068.png')"
-      }}
-    >
+  return <section id="hero" className="relative bg-cover bg-center min-h-screen flex items-center justify-center hero-overlay" style={{
+    backgroundImage: "url('/lovable-uploads/d50f253b-7a76-42ef-baf7-4363c523a068.png')"
+  }}>
       <div className="hero-content text-center text-white p-4 md:p-8">
         <div className="mb-6">
           <span className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 text-white text-sm font-semibold px-4 py-1 rounded-full uppercase tracking-wider">
@@ -31,10 +25,9 @@ export const HeroSection = () => {
           <Countdown targetDate={eventDate} />
         </div>
         
-        <a href="#inscricoes" className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 text-white font-bold py-4 px-10 rounded-lg text-lg cta-button shadow-xl transition-all duration-300 hover:shadow-2xl hover:brightness-110">
+        <a href="#inscricoes" className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 text-white font-bold px-10 rounded-lg text-lg cta-button shadow-xl transition-all duration-300 hover:shadow-2xl hover:brightness-110 py-[24px]">
           <i className="fas fa-running mr-2"></i> Inscreva-se Agora!
         </a>
       </div>
-    </section>
-  );
+    </section>;
 };
