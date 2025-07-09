@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -87,6 +88,9 @@ export const Navigation = () => {
               <a href="#inscricoes" className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 text-white font-semibold py-2 px-5 rounded-lg cta-button text-sm transition-all duration-300 hover:shadow-lg hover:brightness-110">
                 Inscreva-se
               </a>
+              <Link to="/admin-login" className="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-all duration-300">
+                Painel do Administrador
+              </Link>
             </div>
             <div className="md:hidden">
               <button 
