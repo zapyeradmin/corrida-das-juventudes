@@ -1,6 +1,5 @@
 export const AboutSection = () => {
-  return (
-    <section id="sobre" className="py-20 md:py-28 bg-white">
+  return <section id="sobre" className="py-20 md:py-28 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="section-title text-4xl md:text-5xl font-bold text-center mb-4">
           Sobre o <span className="gradient-text">Evento</span>
@@ -10,11 +9,7 @@ export const AboutSection = () => {
         </p>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="custom-card overflow-hidden">
-            <img 
-              src="https://placehold.co/600x450/3b82f6/ffffff?text=Imagem+do+Evento" 
-              alt="Imagem do Evento de Corrida" 
-              className="w-full h-auto object-cover"
-            />
+            <img alt="Imagem do Evento de Corrida" className="w-full h-auto object-cover" src="/lovable-uploads/fb3f7c4f-6b7a-4606-9c17-57ea2f9981bd.jpg" />
           </div>
           <div className="text-gray-700">
             <h3 className="text-3xl font-semibold text-gray-800 mb-6">Comunhão, Protagonismo e Fé</h3>
@@ -41,6 +36,5 @@ export const AboutSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
