@@ -112,7 +112,7 @@ const AdminDashboard = () => {
     try {
       const { error } = await supabase
         .from('inscricoes')
-        .update({ status_pagamento: 'Aprovado' })
+        .update({ status_pagamento: 'pago' })
         .eq('id', id);
       
       if (error) throw error;
@@ -193,7 +193,7 @@ const AdminDashboard = () => {
 
     allInscricoes.forEach(insc => {
       const valor = insc.forma_pagamento === 'PIX' ? valorPix : valorCartao;
-      if (insc.status_pagamento === 'Aprovado') {
+      if (insc.status_pagamento === 'pago') {
         valorConfirmado += valor;
       } else {
         valorPendente += valor;
@@ -330,15 +330,15 @@ const AdminDashboard = () => {
                     <td className="px-6 py-4">{inscricao.forma_pagamento || 'N/A'}</td>
                     <td className="px-6 py-4">
                       <span className={`px-2 py-1 font-semibold leading-tight text-xs rounded-full ${
-                        inscricao.status_pagamento === 'Aprovado' 
+                        inscricao.status_pagamento === 'pago' 
                           ? 'bg-green-100 text-green-800' 
                           : 'bg-yellow-100 text-yellow-800'
                       }`}>
-                        {inscricao.status_pagamento}
+                        {inscricao.status_pagamento === 'pago' ? 'Aprovado' : inscricao.status_pagamento}
                       </span>
                     </td>
                     <td className="px-6 py-4 text-center space-x-2">
-                      {inscricao.status_pagamento !== 'Aprovado' && (
+                      {inscricao.status_pagamento !== 'pago' && (
                         <button 
                           onClick={() => handleApprove(inscricao.id)}
                           className="text-green-600 hover:text-green-900"
