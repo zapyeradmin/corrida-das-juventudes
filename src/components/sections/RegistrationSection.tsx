@@ -159,9 +159,9 @@ export const RegistrationSection = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="Geral Masculino">Geral Masculino</SelectItem>
-                <SelectItem value="Geral Feminina">Geral Feminina</SelectItem>
-                <SelectItem value="Expressão Juvenil Masculina">Expressão Juvenil Masculina</SelectItem>
-                <SelectItem value="Expressão Juvenil Feminina">Expressão Juvenil Feminina</SelectItem>
+                <SelectItem value="Geral Feminino">Geral Feminino</SelectItem>
+                <SelectItem value="Expressão Juvenil Masculino">Expressão Juvenil Masculino</SelectItem>
+                <SelectItem value="Expressão Juvenil Feminino">Expressão Juvenil Feminino</SelectItem>
               </SelectContent>
             </Select>
           </div>
