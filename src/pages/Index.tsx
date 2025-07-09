@@ -2,8 +2,10 @@ import { useEffect } from "react";
 import { Navigation } from "@/components/sections/Navigation";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
-import { DetailsSection } from "@/components/sections/DetailsSection";
 import { AwardsSection } from "@/components/sections/AwardsSection";
+import { ScheduleSection } from "@/components/sections/ScheduleSection";
+import { RouteSection } from "@/components/sections/RouteSection";
+import { PartnersSection } from "@/components/sections/PartnersSection";
 import { RegistrationSection } from "@/components/sections/RegistrationSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { Footer } from "@/components/sections/Footer";
@@ -23,13 +25,15 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background font-inter">
+    <div className="min-h-screen bg-gray-50 text-gray-700 antialiased font-roboto">
       <Navigation />
       <HeroSection />
       <main>
         <AboutSection />
-        <DetailsSection />
         <AwardsSection />
+        <ScheduleSection />
+        <RouteSection />
+        <PartnersSection />
         <RegistrationSection />
         <FAQSection />
       </main>

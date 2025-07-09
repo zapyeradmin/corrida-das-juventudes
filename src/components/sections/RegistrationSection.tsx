@@ -15,7 +15,8 @@ export const RegistrationSection = () => {
     data_nascimento: "",
     cpf: "",
     sexo: "Masculino",
-    categoria: "Geral Masculino"
+    categoria: "Geral Masculino",
+    forma_pagamento: ""
   });
 
   const handleInputChange = (field: string, value: string) => {
@@ -81,7 +82,8 @@ export const RegistrationSection = () => {
           data_nascimento: "",
           cpf: "",
           sexo: "Masculino",
-          categoria: "Geral Masculino"
+          categoria: "Geral Masculino",
+          forma_pagamento: ""
         });
       }
     } catch (err) {
@@ -97,103 +99,138 @@ export const RegistrationSection = () => {
   };
 
   return (
-    <section id="inscricao" className="py-20 lg:py-32">
-      <div className="container mx-auto px-6">
-        <div className="bg-card p-8 md:p-12 lg:p-16 rounded-3xl shadow-2xl border border-border">
-          <div className="grid lg:grid-cols-5 gap-12 items-center">
-            <div className="lg:col-span-2" data-aos="fade-right">
-              <h2 className="text-4xl font-bold text-foreground">Garanta sua Vaga</h2>
-              <p className="text-7xl font-black text-primary mt-2">R$55</p>
-              <p className="text-muted-foreground mt-4 text-lg">
-                Sua inscrição inclui o kit atleta com número de peito, hidratação, medalha e a chance de ser premiado!
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-4 lg:col-span-3" data-aos="fade-left">
-              <div>
-                <Label htmlFor="nome">Nome Completo</Label>
-                <Input 
-                  id="nome" 
-                  value={formData.nome_completo} 
-                  onChange={e => handleInputChange('nome_completo', e.target.value)} 
-                  className="mt-1" 
-                  required 
-                />
-              </div>
-              <div>
-                <Label htmlFor="email">E-mail</Label>
-                <Input 
-                  type="email" 
-                  id="email" 
-                  value={formData.email} 
-                  onChange={e => handleInputChange('email', e.target.value)} 
-                  className="mt-1" 
-                  required 
-                />
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="nascimento">Data de Nascimento</Label>
-                  <Input 
-                    type="date" 
-                    id="nascimento" 
-                    value={formData.data_nascimento} 
-                    onChange={e => handleInputChange('data_nascimento', e.target.value)} 
-                    className="mt-1" 
-                    required 
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="cpf">CPF</Label>
-                  <Input 
-                    id="cpf" 
-                    placeholder="000.000.000-00" 
-                    value={formData.cpf} 
-                    onChange={e => handleInputChange('cpf', e.target.value)} 
-                    className="mt-1" 
-                    required 
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="sexo">Sexo</Label>
-                  <Select value={formData.sexo} onValueChange={value => handleInputChange('sexo', value)}>
-                    <SelectTrigger className="mt-1">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Masculino">Masculino</SelectItem>
-                      <SelectItem value="Feminino">Feminino</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <Label htmlFor="categoria">Categoria</Label>
-                  <Select value={formData.categoria} onValueChange={value => handleInputChange('categoria', value)}>
-                    <SelectTrigger className="mt-1">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Geral Masculino">Geral Masculino</SelectItem>
-                      <SelectItem value="Geral Feminino">Geral Feminino</SelectItem>
-                      <SelectItem value="Expressão Juvenil Masculino">Expressão Juvenil Masculino</SelectItem>
-                      <SelectItem value="Expressão Juvenil Feminino">Expressão Juvenil Feminino</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-              <div className="pt-4">
-                <Button type="submit" disabled={isSubmitting} className="w-full btn-secondary py-4 text-xl font-bold">
-                  {isSubmitting ? 
-                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mx-auto"></div> : 
-                    "CONCLUIR MINHA INSCRIÇÃO"
-                  }
-                </Button>
-              </div>
-            </form>
+    <section id="inscricoes" className="pt-12 md:pt-16 pb-16 md:pb-20 bg-gradient-to-br from-blue-600 to-indigo-800 text-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-poppins">
+          Inscreva-se e <span className="text-yellow-400">Participe!</span>
+        </h2>
+        <p className="text-center text-blue-100 mb-10 max-w-xl mx-auto">
+          Não perca tempo! Preencha o formulário abaixo e garanta sua vaga na Corrida das Juventudes. Vagas limitadas! 
+          Ao preencher o formulário de inscrição, você será redirecionado(a) para página de pagamento, realize o pagamento 
+          via PIX ou Cartão de Crédito e aguarde até a "CONFIRMAÇÃO DE PAGAMENTO COM SUCESSO" e nos envie o comprovante 
+          de pagamento para o WhatsApp (87) 99921-1865 para validar sua inscrição!
+        </p>
+        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xl shadow-2xl text-gray-800">
+          <div className="mb-5">
+            <Label htmlFor="nome" className="block text-sm font-semibold mb-1 text-gray-700">
+              Nome Completo <span className="text-red-500">*</span>
+            </Label>
+            <Input 
+              id="nome" 
+              value={formData.nome_completo} 
+              onChange={e => handleInputChange('nome_completo', e.target.value)} 
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow" 
+              required 
+            />
           </div>
-        </div>
+
+          <div className="grid sm:grid-cols-2 gap-x-6 gap-y-5 mb-5">
+            <div>
+              <Label htmlFor="email" className="block text-sm font-semibold mb-1 text-gray-700">
+                E-mail <span className="text-red-500">*</span>
+              </Label>
+              <Input 
+                type="email" 
+                id="email" 
+                value={formData.email} 
+                onChange={e => handleInputChange('email', e.target.value)} 
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow" 
+                placeholder="seuemail@dominio.com"
+                required 
+              />
+            </div>
+            <div>
+              <Label htmlFor="nascimento" className="block text-sm font-semibold mb-1 text-gray-700">
+                Data de Nascimento <span className="text-red-500">*</span>
+              </Label>
+              <Input 
+                type="date" 
+                id="nascimento" 
+                value={formData.data_nascimento} 
+                onChange={e => handleInputChange('data_nascimento', e.target.value)} 
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow" 
+                required 
+              />
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-x-6 gap-y-5 mb-5">
+            <div>
+              <Label htmlFor="cpf" className="block text-sm font-semibold mb-1 text-gray-700">
+                CPF <span className="text-red-500">*</span>
+              </Label>
+              <Input 
+                id="cpf" 
+                placeholder="000.000.000-00" 
+                value={formData.cpf} 
+                onChange={e => handleInputChange('cpf', e.target.value)} 
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow" 
+                required 
+              />
+            </div>
+            <div>
+              <Label htmlFor="sexo" className="block text-sm font-semibold mb-1 text-gray-700">
+                Sexo <span className="text-red-500">*</span>
+              </Label>
+              <Select value={formData.sexo} onValueChange={value => handleInputChange('sexo', value)}>
+                <SelectTrigger className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow bg-white">
+                  <SelectValue placeholder="Selecione..." />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Masculino">Masculino</SelectItem>
+                  <SelectItem value="Feminino">Feminino</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+
+          <div className="mb-5">
+            <Label htmlFor="categoria" className="block text-sm font-semibold mb-1 text-gray-700">
+              Categoria <span className="text-red-500">*</span>
+            </Label>
+            <Select value={formData.categoria} onValueChange={value => handleInputChange('categoria', value)}>
+              <SelectTrigger className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow bg-white">
+                <SelectValue placeholder="Selecione sua categoria..." />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Geral Masculino">Geral Masculino</SelectItem>
+                <SelectItem value="Geral Feminina">Geral Feminina</SelectItem>
+                <SelectItem value="Expressão Juvenil Masculina">Expressão Juvenil Masculina</SelectItem>
+                <SelectItem value="Expressão Juvenil Feminina">Expressão Juvenil Feminina</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="mb-8">
+            <Label htmlFor="forma_pagamento" className="block text-sm font-semibold mb-1 text-gray-700">
+              Forma de Pagamento <span className="text-red-500">*</span>
+            </Label>
+            <Select value={formData.forma_pagamento || ''} onValueChange={value => handleInputChange('forma_pagamento', value)}>
+              <SelectTrigger className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow bg-white">
+                <SelectValue placeholder="Selecione..." />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="PIX">PIX</SelectItem>
+                <SelectItem value="Cartão de Crédito">Cartão de Crédito</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="text-center">
+            <Button 
+              type="submit" 
+              disabled={isSubmitting} 
+              className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 text-white font-bold py-3.5 px-12 rounded-lg text-lg w-full sm:w-auto shadow-xl transition-all duration-300 hover:shadow-2xl hover:brightness-110"
+            >
+              {isSubmitting ? 
+                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mx-auto"></div> : 
+                <>
+                  <i className="fas fa-check-circle mr-2"></i> Confirmar Inscrição
+                </>
+              }
+            </Button>
+          </div>
+        </form>
       </div>
     </section>
   );

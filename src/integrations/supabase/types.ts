@@ -21,6 +21,7 @@ export type Database = {
           created_at: string
           data_nascimento: string
           email: string
+          forma_pagamento: string | null
           id: string
           nome_completo: string
           sexo: string
@@ -32,6 +33,7 @@ export type Database = {
           created_at?: string
           data_nascimento: string
           email: string
+          forma_pagamento?: string | null
           id?: string
           nome_completo: string
           sexo: string
@@ -43,10 +45,38 @@ export type Database = {
           created_at?: string
           data_nascimento?: string
           email?: string
+          forma_pagamento?: string | null
           id?: string
           nome_completo?: string
           sexo?: string
           status_pagamento?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          role: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          role?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          role?: string | null
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
