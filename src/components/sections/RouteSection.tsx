@@ -1,6 +1,5 @@
 export const RouteSection = () => {
-  return (
-    <section id="percurso" className="py-20 md:py-28 bg-gray-100">
+  return <section id="percurso" className="py-20 md:py-28 bg-gray-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="section-title text-4xl md:text-5xl font-bold text-center mb-4">
           Percurso <span className="gradient-text">Desafiador</span> (5Km)
@@ -11,11 +10,7 @@ export const RouteSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1">
             <div className="custom-card overflow-hidden">
-              <img 
-                src="https://placehold.co/600x500/1e3a8a/ffffff?text=Mapa+Ilustrativo+do+Percurso" 
-                alt="Mapa do Percurso da Corrida de 5km" 
-                className="w-full h-auto object-cover"
-              />
+              <img alt="Mapa do Percurso da Corrida de 5km" className="w-full h-auto object-cover" src="/lovable-uploads/d5971929-ff78-4a73-85a0-cf16dc7cbdb7.jpg" />
             </div>
             <p className="text-center text-sm text-gray-500 mt-3">
               Mapa ilustrativo. O trajeto exato será sinalizado no dia.
@@ -60,6 +55,5 @@ export const RouteSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
