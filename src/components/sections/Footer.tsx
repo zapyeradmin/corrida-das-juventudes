@@ -26,7 +26,7 @@ export const Footer = () => {
           </div>
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Acesso Administrativo</h4>
-            <a href="./admin/" className="text-sm hover:text-yellow-400 transition-colors">
+            <a href="/admin-login" className="text-sm hover:text-yellow-400 transition-colors">
               <i className="fas fa-user-shield mr-2"></i>Painel do Administrador
             </a>
           </div>
