@@ -4,7 +4,7 @@ export const AboutSection = () => {
         <h2 className="section-title text-4xl md:text-5xl font-bold text-center mb-4">
           Sobre o <span className="gradient-text">Evento</span>
         </h2>
-        <p className="text-center text-gray-600 mb-16 max-w-3xl mx-auto">
+        <p className="text-center text-gray-600 mb-16 max-w-3xl mx-auto py-0 px-[56px]">
           Mais do que uma competição, esta corrida é um ato de celebração da vida, da saúde e da força que vem da fé.
         </p>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
