@@ -2,7 +2,7 @@ import { Countdown } from '@/components/Countdown';
 export const HeroSection = () => {
   const eventDate = new Date('2025-08-30T06:00:00-03:00');
   return <section id="hero" className="relative bg-cover bg-center min-h-screen flex items-center justify-center hero-overlay" style={{
-    backgroundImage: "url('/lovable-uploads/d50f253b-7a76-42ef-baf7-4363c523a068.png')"
+    backgroundImage: "url('/lovable-uploads/ebb90b29-abcc-4c86-aeeb-59f34d15ad04.png')"
   }}>
       <div className="hero-content text-center text-white p-4 md:p-8">
         <div className="mb-6">
