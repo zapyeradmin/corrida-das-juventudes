@@ -64,7 +64,7 @@ export const Navigation = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex justify-between items-center">
             <a href="#" className="text-2xl font-bold event-title-font brand-logo text-white">
-              JUVENTUDES<span className="text-yellow-400">RUN</span>
+              JUVENTUDES<span className="text-yellow-400">JUVENTUDES</span>
             </a>
             <div className="hidden md:flex space-x-6 items-center">
               <a href="#sobre" className="nav-link text-gray-200 hover:text-white font-medium">Sobre</a>
