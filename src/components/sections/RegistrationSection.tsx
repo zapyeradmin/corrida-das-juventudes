@@ -97,12 +97,7 @@ export const RegistrationSection = () => {
         <h2 className="section-title text-4xl md:text-5xl font-bold text-center mb-4">
           Inscreva-se e <span className="text-yellow-400">Participe!</span>
         </h2>
-        <p className="text-center text-blue-100 mb-10 max-w-xl mx-auto px-[17px]">
-          Não perca tempo! Preencha o formulário abaixo e garanta sua vaga na Corrida das Juventudes. Vagas limitadas! 
-          Ao preencher o formulário de inscrição, você será redirecionado(a) para página de pagamento, realize o pagamento 
-          via PIX ou Cartão de Crédito e aguarde até a "CONFIRMAÇÃO DE PAGAMENTO COM SUCESSO" e nos envie o comprovante 
-          de pagamento para o WhatsApp (87) 99921-1865 para validar sua inscrição!
-        </p>
+        <p className="text-center text-blue-100 mb-10 max-w-xl mx-auto px-[17px]">Garanta já sua vaga na Corrida das Juventudes! As vagas são limitadas — não deixe para depois! Preencha o formulário abaixo e clique em Confirmar Inscrição para ser redirecionado ao pagamento via Mercado Pago. Em casos de dúvidas fale com a gente no WhatsApp: (87) 99921-1865.</p>
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xl shadow-2xl text-gray-800 custom-card">
           <div className="mb-5">
             <Label htmlFor="nome" className="block text-sm font-semibold mb-1 text-gray-700">
