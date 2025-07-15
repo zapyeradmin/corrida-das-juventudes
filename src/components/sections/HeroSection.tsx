@@ -6,9 +6,7 @@ export const HeroSection = () => {
   }}>
       <div className="hero-content text-center text-white p-4 md:p-8">
         <div className="mb-6">
-          <span className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 text-white text-sm font-semibold px-4 py-1 rounded-full uppercase tracking-wider">
-            30 de Agosto de 2025
-          </span>
+          <span className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 text-white text-sm font-semibold px-4 py-1 rounded-full uppercase tracking-wider">31 DE AGOSTO DE 2025</span>
           <span className="mx-2 text-gray-300 hidden sm:inline">|</span>
           <span className="text-gray-200 text-sm font-medium block sm:inline mt-2 sm:mt-0">
             <i className="fas fa-map-marker-alt mr-1"></i> Afogados da Ingazeira - PE
