@@ -4,8 +4,9 @@ export const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8 mb-8 text-center md:text-left">
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4 event-title-font">
-              JUVENTUDES<span className="text-yellow-400">RUN</span>
+            <h3 className="text-xl font-semibold mb-4 event-title-font">
+              <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">CORRIDA DAS</span>{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">JUVENTUDES</span>
             </h3>
             <p className="text-sm">1ª Corrida das Juventudes. Um evento do Setor Diocesano da Juventude.</p>
           </div>
