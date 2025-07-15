@@ -63,7 +63,7 @@ export const Navigation = () => {
       <header id="mainHeader" className="fixed w-full z-50 transition-all duration-300 ease-in-out py-2">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex justify-between items-center">
-            <a href="#" className="text-2xl font-bold event-title-font brand-logo text-white">
+            <a href="#" className="text-2xl font-bold event-title-font brand-logo text-blue-600 ">
               CORRIDA DAS JUVENTUDES
             </a>
             <div className="hidden md:flex space-x-6 items-center">
