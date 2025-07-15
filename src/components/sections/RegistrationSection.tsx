@@ -68,7 +68,7 @@ export const RegistrationSection = () => {
         console.log('Inscrição realizada:', data);
         toast({
           title: "Inscrição realizada!",
-          description: "Confira seu e-mail para os próximos passos.",
+          description: "Redirecionando para o pagamento...",
           variant: "default"
         });
         setFormData({
@@ -80,6 +80,9 @@ export const RegistrationSection = () => {
           categoria: "Geral Masculino",
           forma_pagamento: ""
         });
+        
+        // Abrir nova aba com o link do Mercado Pago
+        window.open('https://mpago.la/1WyqTty', '_blank');
       }
     } catch (err) {
       console.error('Erro inesperado:', err);
