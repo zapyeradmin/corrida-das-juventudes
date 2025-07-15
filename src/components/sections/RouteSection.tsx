@@ -28,9 +28,7 @@ export const RouteSection = () => {
                 <i className="fas fa-road text-3xl text-blue-500 mr-4 mt-1"></i>
                 <div>
                   <h4 className="font-semibold text-lg">Trajeto Principal</h4>
-                  <p className="text-gray-600">
-                    Largada na Praça da Catedral, passando pela Av. Rio Branco, Rua Henrique Dias e retornando pela Av. Manoel Borba.
-                  </p>
+                  <p className="text-gray-600">Largada na Praça da Catedral, passando pela Av. Rio Branco, Anel Viário Antônio Valadares de Souza, Av. Helvécio Lima, retornando pelo Anel Viário Antônio Valadares de Souza, Avenida Rio Branco, R. Dom Góes chegando ao final do Percurso na chegada.</p>
                 </div>
               </div>
               <div className="flex items-start p-4 bg-white rounded-lg shadow-sm">
