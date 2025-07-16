@@ -1,6 +1,5 @@
 export const ScheduleSection = () => {
-  return (
-    <section id="cronograma" className="py-20 md:py-28 bg-white">
+  return <section id="cronograma" className="py-20 md:py-28 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="section-title text-4xl md:text-5xl font-bold text-center mb-4">
           Cronograma do <span className="gradient-text">Grande Dia</span>
@@ -48,7 +47,7 @@ export const ScheduleSection = () => {
               </li>
               <li className="flex items-center">
                 <i className="fas fa-check-circle text-green-500 mr-3"></i>
-                <span>Hidratação durante o percurso</span>
+                <span>Café da manhã e Hidratação durante o percurso</span>
               </li>
               <li className="flex items-center">
                 <i className="fas fa-check-circle text-green-500 mr-3"></i>
@@ -62,6 +61,5 @@ export const ScheduleSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
