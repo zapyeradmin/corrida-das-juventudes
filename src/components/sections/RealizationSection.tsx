@@ -1,6 +1,6 @@
-// Usando as imagens do diretório public
-const logoSetor = "/lovable-uploads/9d41fb2b-5b99-47af-94b5-9926ad5c1db2.png";
-const brasaoDiocese = "/lovable-uploads/42e47954-a6bf-433d-98be-ba1bee1bb198.png";
+// Usando as imagens do diretório public (posições invertidas conforme solicitado)
+const logoSetor = "/lovable-uploads/42e47954-a6bf-433d-98be-ba1bee1bb198.png";
+const brasaoDiocese = "/lovable-uploads/9d41fb2b-5b99-47af-94b5-9926ad5c1db2.png";
 
 export const RealizationSection = () => {
   return (
