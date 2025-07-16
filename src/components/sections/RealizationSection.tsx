@@ -28,7 +28,7 @@ export const RealizationSection = () => {
             {/* Apoio */}
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-foreground">
+                <h3 className="text-xl font-semibold mb-4 text-sky-800">
                   Apoio
                 </h3>
                 <p className="text-lg text-muted-foreground mb-6">
