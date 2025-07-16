@@ -17,7 +17,9 @@ export const RegistrationSection = () => {
     cpf: "",
     sexo: "Masculino",
     categoria: "Geral Masculino",
-    forma_pagamento: ""
+    forma_pagamento: "",
+    whatsapp: "",
+    nome_expressao_juvenil: ""
   });
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
@@ -28,6 +30,18 @@ export const RegistrationSection = () => {
   const validateCPF = (cpf: string) => {
     const cleanCPF = cpf.replace(/\D/g, '');
     return cleanCPF.length === 11;
+  };
+
+  const formatWhatsApp = (value: string) => {
+    const cleanValue = value.replace(/\D/g, '');
+    if (cleanValue.length <= 2) return cleanValue;
+    if (cleanValue.length <= 7) return `(${cleanValue.slice(0, 2)}) ${cleanValue.slice(2)}`;
+    return `(${cleanValue.slice(0, 2)}) ${cleanValue.slice(2, 7)}-${cleanValue.slice(7, 11)}`;
+  };
+
+  const handleWhatsAppChange = (value: string) => {
+    const formatted = formatWhatsApp(value);
+    handleInputChange('whatsapp', formatted);
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,6 +60,7 @@ export const RegistrationSection = () => {
     const registrationData = {
       ...formData,
       cpf: formData.cpf.replace(/\D/g, ''),
+      whatsapp: formData.whatsapp.replace(/\D/g, ''),
       status_pagamento: 'pendente'
     };
     try {
@@ -78,7 +93,9 @@ export const RegistrationSection = () => {
           cpf: "",
           sexo: "Masculino",
           categoria: "Geral Masculino",
-          forma_pagamento: ""
+          forma_pagamento: "",
+          whatsapp: "",
+          nome_expressao_juvenil: ""
         });
         
         // Abrir nova aba com o link do Mercado Pago
@@ -148,6 +165,20 @@ export const RegistrationSection = () => {
           </div>
 
           <div className="mb-5">
+            <Label htmlFor="whatsapp" className="block text-sm font-semibold mb-1 text-gray-700">
+              WhatsApp <span className="text-red-500">*</span>
+            </Label>
+            <Input 
+              id="whatsapp" 
+              placeholder="(87) 99999-9999"
+              value={formData.whatsapp}
+              onChange={e => handleWhatsAppChange(e.target.value)}
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow"
+              required 
+            />
+          </div>
+
+          <div className="mb-5">
             <Label htmlFor="categoria" className="block text-sm font-semibold mb-1 text-gray-700">
               Categoria <span className="text-red-500">*</span>
             </Label>
@@ -163,6 +194,22 @@ export const RegistrationSection = () => {
               </SelectContent>
             </Select>
           </div>
+
+          {(formData.categoria === "Expressão Juvenil Masculino" || formData.categoria === "Expressão Juvenil Feminino") && (
+            <div className="mb-5">
+              <Label htmlFor="nome_expressao" className="block text-sm font-semibold mb-1 text-gray-700">
+                Qual o nome da Expressão Juvenil? <span className="text-red-500">*</span>
+              </Label>
+              <Input 
+                id="nome_expressao" 
+                value={formData.nome_expressao_juvenil}
+                onChange={e => handleInputChange('nome_expressao_juvenil', e.target.value)}
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-shadow"
+                placeholder="Digite o nome da sua Expressão Juvenil"
+                required 
+              />
+            </div>
+          )}
 
           <div className="mb-8">
             <Label htmlFor="forma_pagamento" className="block text-sm font-semibold mb-1 text-gray-700">

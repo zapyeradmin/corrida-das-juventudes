@@ -11,6 +11,8 @@ interface Inscricao {
   forma_pagamento: string;
   data_nascimento: string;
   created_at: string;
+  whatsapp: string;
+  nome_expressao_juvenil?: string;
 }
 
 interface EditModalProps {
@@ -65,6 +67,16 @@ export const EditModal: React.FC<EditModalProps> = ({
               />
             </div>
             <div>
+              <label className="block text-sm font-medium text-gray-700">WhatsApp</label>
+              <input 
+                type="text" 
+                name="whatsapp"
+                defaultValue={selectedInscricao.whatsapp}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2 border"
+                required
+              />
+            </div>
+            <div>
               <label className="block text-sm font-medium text-gray-700">Sexo</label>
               <select 
                 name="sexo"
@@ -89,6 +101,16 @@ export const EditModal: React.FC<EditModalProps> = ({
                 <option value="Expressão Juvenil Masculino">Expressão Juvenil Masculino</option>
                 <option value="Expressão Juvenil Feminino">Expressão Juvenil Feminino</option>
               </select>
+            </div>
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-gray-700">Nome da Expressão Juvenil</label>
+              <input 
+                type="text" 
+                name="nome_expressao_juvenil"
+                defaultValue={selectedInscricao.nome_expressao_juvenil || ''}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2 border"
+                placeholder="Somente para categorias de Expressão Juvenil"
+              />
             </div>
           </div>
           <div className="mt-6 flex justify-end space-x-3">

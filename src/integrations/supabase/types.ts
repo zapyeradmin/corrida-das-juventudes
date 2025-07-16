@@ -24,8 +24,10 @@ export type Database = {
           forma_pagamento: string | null
           id: string
           nome_completo: string
+          nome_expressao_juvenil: string | null
           sexo: string
           status_pagamento: string
+          whatsapp: string
         }
         Insert: {
           categoria: string
@@ -36,8 +38,10 @@ export type Database = {
           forma_pagamento?: string | null
           id?: string
           nome_completo: string
+          nome_expressao_juvenil?: string | null
           sexo: string
           status_pagamento?: string
+          whatsapp?: string
         }
         Update: {
           categoria?: string
@@ -48,8 +52,10 @@ export type Database = {
           forma_pagamento?: string | null
           id?: string
           nome_completo?: string
+          nome_expressao_juvenil?: string | null
           sexo?: string
           status_pagamento?: string
+          whatsapp?: string
         }
         Relationships: []
       }

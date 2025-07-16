@@ -13,6 +13,8 @@ interface Inscricao {
   forma_pagamento: string;
   data_nascimento: string;
   created_at: string;
+  whatsapp: string;
+  nome_expressao_juvenil?: string;
 }
 
 export const useAdminData = () => {

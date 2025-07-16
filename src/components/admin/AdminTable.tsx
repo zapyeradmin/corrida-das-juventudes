@@ -11,6 +11,8 @@ interface Inscricao {
   forma_pagamento: string;
   data_nascimento: string;
   created_at: string;
+  whatsapp: string;
+  nome_expressao_juvenil?: string;
 }
 
 interface AdminTableProps {
@@ -43,9 +45,9 @@ export const AdminTable: React.FC<AdminTableProps> = ({
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
               <th className="px-6 py-3">Nome Completo</th>
-              <th className="px-6 py-3">CPF</th>
+              <th className="px-6 py-3">WhatsApp</th>
               <th className="px-6 py-3">Categoria</th>
-              <th className="px-6 py-3">Pagamento</th>
+              <th className="px-6 py-3">Expressão Juvenil</th>
               <th className="px-6 py-3">Status</th>
               <th className="px-6 py-3 text-center">Ações</th>
             </tr>
@@ -56,9 +58,9 @@ export const AdminTable: React.FC<AdminTableProps> = ({
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                   {inscricao.nome_completo}
                 </td>
-                <td className="px-6 py-4">{inscricao.cpf}</td>
+                <td className="px-6 py-4">{inscricao.whatsapp}</td>
                 <td className="px-6 py-4">{inscricao.categoria}</td>
-                <td className="px-6 py-4">{inscricao.forma_pagamento || 'N/A'}</td>
+                <td className="px-6 py-4">{inscricao.nome_expressao_juvenil || '-'}</td>
                 <td className="px-6 py-4">
                   <span className={`px-2 py-1 font-semibold leading-tight text-xs rounded-full ${
                     inscricao.status_pagamento === 'pago' 
@@ -78,6 +80,15 @@ export const AdminTable: React.FC<AdminTableProps> = ({
                       <i className="fas fa-check-circle"></i>
                     </button>
                   )}
+                  <a
+                    href={`https://wa.me/55${inscricao.whatsapp.replace(/\D/g, '')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-green-600 hover:text-green-900"
+                    title="Falar no WhatsApp"
+                  >
+                    <i className="fab fa-whatsapp"></i>
+                  </a>
                   <button 
                     onClick={() => onEdit(inscricao)}
                     className="text-blue-600 hover:text-blue-900"

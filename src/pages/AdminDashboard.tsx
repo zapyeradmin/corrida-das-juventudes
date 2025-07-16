@@ -18,6 +18,8 @@ interface Inscricao {
   forma_pagamento: string;
   data_nascimento: string;
   created_at: string;
+  whatsapp: string;
+  nome_expressao_juvenil?: string;
 }
 
 const AdminDashboard = () => {
@@ -84,6 +86,8 @@ const AdminDashboard = () => {
       cpf: formData.get('cpf') as string,
       sexo: formData.get('sexo') as string,
       categoria: formData.get('categoria') as string,
+      whatsapp: formData.get('whatsapp') as string,
+      nome_expressao_juvenil: formData.get('nome_expressao_juvenil') as string,
     };
 
     const success = await handleEdit(updatedData, selectedInscricao.id);
