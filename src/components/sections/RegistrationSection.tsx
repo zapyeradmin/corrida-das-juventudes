@@ -5,6 +5,8 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import { registrationOpen } from "@/config/appConfig";
 export const RegistrationSection = () => {
   const {
     toast
@@ -45,6 +47,14 @@ export const RegistrationSection = () => {
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!registrationOpen) {
+      toast({
+        title: "Inscrições encerradas",
+        description: "O limite de vagas foi atingido.",
+        variant: "destructive",
+      });
+      return;
+    }
     setIsSubmitting(true);
 
     // Validar CPF
@@ -119,6 +129,15 @@ export const RegistrationSection = () => {
         </h2>
         <p className="text-center text-blue-100 mb-10 max-w-xl mx-auto my-[18px] px-0">Garanta já sua vaga na Corrida das Juventudes! As vagas são limitadas — não deixe para depois! Preencha o formulário abaixo e clique em Confirmar Inscrição para ser redirecionado ao pagamento via Mercado Pago. Em casos de dúvidas fale com a gente no WhatsApp: (87) 99921-1865.</p>
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-8 sm:p-10 rounded-xl shadow-2xl text-gray-800 custom-card">
+          {!registrationOpen && (
+            <Alert variant="destructive" className="mb-6">
+              <AlertTitle>Inscrições encerradas</AlertTitle>
+              <AlertDescription>
+                O limite de vagas foi atingido. Agradecemos o interesse!
+              </AlertDescription>
+            </Alert>
+          )}
+          <fieldset disabled={!registrationOpen} aria-disabled={!registrationOpen} className={!registrationOpen ? "opacity-60" : undefined}>
           <div className="mb-5">
             <Label htmlFor="nome" className="block text-sm font-semibold mb-1 text-gray-700">
               Nome Completo <span className="text-red-500">*</span>
@@ -227,12 +246,13 @@ export const RegistrationSection = () => {
           </div>
 
           <div className="text-center">
-            <Button type="submit" disabled={isSubmitting} className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 text-white font-bold py-3.5 px-12 rounded-lg text-lg cta-button w-full sm:w-auto shadow-xl transition-all duration-300 hover:shadow-2xl hover:brightness-110">
+            <Button type="submit" disabled={isSubmitting || !registrationOpen} className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 text-white font-bold py-3.5 px-12 rounded-lg text-lg cta-button w-full sm:w-auto shadow-xl transition-all duration-300 hover:shadow-2xl hover:brightness-110">
               {isSubmitting ? <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mx-auto"></div> : <>
                   <i className="fas fa-check-circle mr-2"></i> Confirmar Inscrição
                 </>}
             </Button>
           </div>
+          </fieldset>
         </form>
       </div>
     </section>;
